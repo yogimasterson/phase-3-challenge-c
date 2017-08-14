@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/yogimasterson/phase-3-challenge-c#readme",
   "dependencies": {
+    "body-parser": "^1.17.2",
     "express": "^4.15.4"
   },
   "devDependencies": {
