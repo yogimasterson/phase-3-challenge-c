@@ -185,11 +185,11 @@ $ node hotel.js bookings 3B
 ```
 
 ### Requirements
-- [ ] __10:__ All files are stored under the `part-2/` folder
-- [ ] __10:__ Database schema (all `CREATE TABLE` statements) is defined in a file `schema.sql`
-- [ ] __10:__ SQL statements to insert seed data into all tables is added to the file `load-data.sql` (either create your own seed data or use the files provided: [rooms.csv][hotel-rooms] | [bookings.csv][hotel-bookings] | [guests.csv][hotel-guests])
-- [ ] __10:__ All database query functions are written in a file `database.js`, and tests for queries are written in a file `database_test.js`
-- [ ] __10:__ Tests can be run with the command `$ npm test`
+- [x] __10:__ All files are stored under the `part-2/` folder
+- [x] __10:__ Database schema (all `CREATE TABLE` statements) is defined in a file `schema.sql`
+- [x] __10:__ SQL statements to insert seed data into all tables is added to the file `load-data.sql` (either create your own seed data or use the files provided: [rooms.csv][hotel-rooms] | [bookings.csv][hotel-bookings] | [guests.csv][hotel-guests])
+- [x] __10:__ All database query functions are written in a file `database.js`, and tests for queries are written in a file `database_test.js`
+- [x] __10:__ Tests can be run with the command `$ npm test`
 
 User Stories: Ensure that your schema design can satisfy the following scenarios
 - [ ] __10__: As a hotel manager I can get a list of all guests

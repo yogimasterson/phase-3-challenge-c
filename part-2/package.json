@@ -1,0 +1,23 @@
+{
+  "name": "part-2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha database_test.js",
+    "createdb": "psql < database/hotel_db.sql",
+    "loaddb": "psql < database/load-data.sql"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.1.1",
+    "expect": "^1.20.2",
+    "mocha": "^3.5.0"
+  },
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "pg-promise": "^6.3.8",
+    "postgresql": "0.0.1"
+  }
+}
