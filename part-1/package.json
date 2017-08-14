@@ -1,0 +1,26 @@
+{
+  "name": "phase-3-challenge-c",
+  "version": "1.0.0",
+  "description": "This is the challenge for getting into phase 3. There are 3 parts to the challenge.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yogimasterson/phase-3-challenge-c.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yogimasterson/phase-3-challenge-c/issues"
+  },
+  "homepage": "https://github.com/yogimasterson/phase-3-challenge-c#readme",
+  "dependencies": {
+    "express": "^4.15.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
