@@ -15,7 +15,7 @@ CREATE TABLE rooms(
 	id INT NOT NULL PRIMARY KEY,
 	number VARCHAR(10) NOT NULL,
 	capacity INT NOT NULL,
-	available BOOLEAN DEFAULT false
+	available BOOLEAN DEFAULT true
 );
 
 DROP TABLE IF EXISTS bookings;
