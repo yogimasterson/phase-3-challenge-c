@@ -1,0 +1,30 @@
+DROP DATABASE IF EXISTS hotel;
+CREATE DATABASE hotel;
+
+\c hotel
+
+DROP TABLE IF EXISTS guests;
+CREATE TABLE guests(
+	id INT NOT NULL PRIMARY KEY,
+	name VARCHAR(40) NOT NULL,
+	email VARCHAR(40) NOT NULL
+);
+
+DROP TABLE IF EXISTS rooms;
+CREATE TABLE rooms(
+	id INT NOT NULL PRIMARY KEY,
+	number VARCHAR(10) NOT NULL,
+	capacity INT NOT NULL,
+	available BOOLEAN DEFAULT false
+);
+
+DROP TABLE IF EXISTS bookings;
+CREATE TABLE bookings(
+	id INT NOT NULL PRIMARY KEY,
+	guest_id INT NOT NULL,
+	room_id INT NOT NULL,
+	check_in DATE NOT NULL,
+	check_out DATE NOT NULL,
+	FOREIGN KEY (guest_id) REFERENCES guests (id),
+	FOREIGN KEY (room_id) REFERENCES rooms (id)
+);
