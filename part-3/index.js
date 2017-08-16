@@ -1,24 +1,23 @@
 const book = document.querySelectorAll('.book')
+const quantity = document.querySelector('#quantity')
 const modal = document.querySelector('#booking')
-const close = document.querySelectorAll('.close')[0]
 const modalRoomNumber = document.querySelector('#roomNumber')
 const modalPrice = document.querySelector('#pricePerNight')
 const modalTotal = document.querySelector('#total')
-const quantity = document.querySelector('#quantity')
+const close = document.querySelectorAll('.close')[0]
 
 let room = []
-
-const bookingContents = () => {
-	modalRoomNumber.innerHTML = 'Room ' + room.num
-	modalPrice.innerHTML = room.price + '/ Night'
-	modal.style.display = 'block'
-}
 
 for (let b of book) {
 	b.addEventListener('click', () => {
 		room.num = b.parentNode.previousElementSibling.previousElementSibling.previousElementSibling.innerHTML
 		room.capacity = b.parentNode.previousElementSibling.previousElementSibling.innerHTML
 		room.price = b.parentNode.previousElementSibling.innerHTML
+		const bookingContents = () => {
+			modalRoomNumber.innerHTML = 'Room ' + room.num
+			modalPrice.innerHTML = room.price + '/ Night'
+			modal.style.display = 'block'
+		}
 		bookingContents()
 	})
 }
@@ -27,7 +26,7 @@ close.addEventListener('click', () => {
 	modal.style.display = 'none'
 })
 
-quantity.addEventListener('change', function (e) {
+quantity.addEventListener('change', (e) => {
 	e.preventDefault()
 	let total = this.value * parseFloat(room.price.slice(1))
 	modalTotal.innerHTML = '$ ' + total.toFixed(2)
