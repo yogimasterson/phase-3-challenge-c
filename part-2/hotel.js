@@ -1,19 +1,12 @@
-const promise = require('bluebird')
-
-const options = {
-	promiseLib: promise
-}
-
-const pgp = require('pg-promise')(options)
-const connectionString = 'postgres://localhost:5432/hotel'
-const db = pgp(connectionString)
+const { 
+	listAllGuests, listAllRooms, listAvailableRooms, listUpcomingBookings, listBookingsPerRoom 
+} = require('./database/database.js')
 
 const command = process.argv[2]
-const available = process.argv[3]
+const secondaryCommand = process.argv[3]
 
 if (command === 'guests') {
-	const guests = () => {
-		return db.manyOrNone('SELECT * FROM guests')
+	listAllGuests()
 		.then((data) => {
 			console.log('|----+-----------------------+--------------------------------|')
 			console.log('| ID | Guest Name            | Email                          |')
@@ -22,15 +15,10 @@ if (command === 'guests') {
 				console.log('|  ' + guest.id + ' | ' + guest.name + ' | ' + guest.email + ' |')
 			})
 			console.log('|----+-----------------------+--------------------------------|')
+			process.exit(0)
 		})
-	}
-	guests()
-	.then(() => {
-		process.exit(0)
-	})
-} else if (command === 'rooms' && available == undefined) {
-	const rooms = () => {
-		return db.any('SELECT rooms.number, rooms.capacity, CASE WHEN s THEN false ELSE true END AS available FROM bookings JOIN rooms ON rooms.id = bookings.room_id')
+} else if (command === 'rooms' && secondaryCommand == undefined) {
+	listAllRooms()
 		.then((data) => {
 			console.log('|--------+----------+-----------|')
 			console.log('| Room # | Capacity | Available |')
@@ -39,15 +27,10 @@ if (command === 'guests') {
 				console.log('| ' + room.number + '     | ' + room.capacity + '        | ' + room.available + '     |')
 			})
 			console.log('|--------+----------+-----------|')
+			process.exit(0)
 		})
-	}
-	rooms()
-	.then(() => {
-		process.exit(0)
-	})
-} else if (command === 'rooms' && available === '--available') {
-	const availableRooms = () => {
-		return db.any('SELECT rooms.number, rooms.capacity, CASE WHEN bookings.check_in <= current_date AND current_date <= bookings.check_out THEN false ELSE true END AS available FROM rooms, bookings WHERE AVAILABLE = TRUE AND rooms.id = bookings.room_id')
+} else if (command === 'rooms' && secondaryCommand === '--available') {
+	listAvailableRooms()	
 		.then((data) => {
 			console.log('|--------+----------+-----------|')
 			console.log('| Room # | Capacity | Available |')
@@ -56,15 +39,10 @@ if (command === 'guests') {
 				console.log('| ' + room.number + '     | ' + room.capacity + '        | ' + room.available + '     |')
 			})
 			console.log('|--------+----------+-----------|')
+			process.exit(0)
 		})
-	}
-	availableRooms()
-	.then(() => {
-		process.exit(0)
-	})
-} else if (command === 'bookings') {
-	const upcomingBookings = () => {
-		return db.any('SELECT rooms.number, guests.name, bookings.check_in, bookings.check_out FROM rooms, guests, bookings WHERE rooms.id = bookings.room_id AND guests.id = bookings.guest_id AND bookings.check_out > CURRENT_DATE ORDER BY check_in')
+} else if (command === 'bookings' && secondaryCommand == undefined) {
+	listUpcomingBookings()
 		.then((data) => {
 			console.log('|--------+--------------------+------------+-------------|')
 			console.log('| Room # | Guest Name         | Check-In   | Check-Out   |')
@@ -73,10 +51,20 @@ if (command === 'guests') {
 				console.log('| ' + booking.number + '     | ' + booking.name + '        | ' + booking.check_in + '     |' + booking.check_out + ' |')
 			})
 			console.log('|--------+--------------------+------------+-------------|')
+			process.exit(0)
 		})
-	}
-	upcomingBookings()
-	.then(() => {
-		process.exit(0)
-	})
+} else if (command === 'bookings' && secondaryCommand !== undefined) {
+	listBookingsPerRoom('3B')
+		.then((data) => {
+			console.log('|--------+--------------------+------------+-------------|')
+			console.log('| Room # | Guest Name         | Check-In   | Check-Out   |')
+			console.log('|--------+--------------------+------------+-------------|')
+			data.forEach((booking) => {
+				console.log('| ' + booking.number + '     | ' + booking.name + '        | ' + booking.check_in + '     |' + booking.check_out + ' |')
+			})
+			console.log('|--------+--------------------+------------+-------------|')
+			process.exit(0)
+		})
+} else {
+	console.log('Please enter a valid command')
 }

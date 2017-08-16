@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha database_test.js",
+    "test": "mocha test/database_test.js",
     "createdb": "psql < database/hotel_db.sql",
     "loaddb": "psql < database/load-data.sql"
   },

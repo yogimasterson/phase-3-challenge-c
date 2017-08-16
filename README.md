@@ -192,20 +192,20 @@ $ node hotel.js bookings 3B
 - [x] __10:__ Tests can be run with the command `$ npm test`
 
 User Stories: Ensure that your schema design can satisfy the following scenarios
-- [ ] __10__: As a hotel manager I can get a list of all guests
-- [ ] __10__: As a hotel manager I can get a list of all rooms
-- [ ] __10__: As a hotel manager I can see which rooms have been booked by which guests, along with their check-in and check out dates
+- [x] __10__: As a hotel manager I can get a list of all guests
+- [x] __10__: As a hotel manager I can get a list of all rooms
+- [x] __10__: As a hotel manager I can see which rooms have been booked by which guests, along with their check-in and check out dates
 
 Command line interface requirements
-- [ ] __10__: There is a Node script called `hotel.js` that can be called with different commands
-- [ ] __20__: Command `guests` has been implemented to the above specifications
-- [ ] __30__: Command `rooms` has been implemented to the above specifications
-- [ ] __30__: Command `bookings` has been implemented to the above specifications
+- [x] __10__: There is a Node script called `hotel.js` that can be called with different commands
+- [x] __20__: Command `guests` has been implemented to the above specifications
+- [x] __30__: Command `rooms` has been implemented to the above specifications
+- [x] __30__: Command `bookings` has been implemented to the above specifications
 
 Write tests with [Mocha](https://mochajs.org/) + [Chai](http://chaijs.com/) in `database_test.js` that assert:
-- [ ] __20__: The database function for the command `guests` is tested
-- [ ] __20__: The database function for the command `rooms` is tested
-- [ ] __20__: The database function for the command `bookings` is tested
+- [x] __20__: The database function for the command `guests` is tested
+- [x] __20__: The database function for the command `rooms` is tested
+- [x] __20__: The database function for the command `bookings` is tested
 
 ## Part 3: Web interface for hotel manager
 
