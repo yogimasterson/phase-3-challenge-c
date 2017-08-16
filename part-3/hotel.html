@@ -22,7 +22,7 @@
 			</thead>
 			<tbody>
 				<tr id='room2B'>
-					<td>2B</td>
+					<td id='num'>2B</td>
 					<td>4</td>
 					<td>$59.99</td>
 					<td>
@@ -30,7 +30,7 @@
 					</td>
 				</tr>
 				<tr id='room2A'>
-					<td>2A</td>
+					<td id='num'>2A</td>
 					<td>4</td>
 					<td>$59.99</td>
 					<td>
@@ -38,7 +38,7 @@
 					</td>
 				</tr>
 				<tr id='room3A'>
-					<td>3A</td>
+					<td id='num'>3A</td>
 					<td>2</td>
 					<td>$45.00</td>
 					<td>
@@ -46,7 +46,7 @@
 					</td>
 				</tr>
 				<tr id='room3B'>
-					<td>3B</td>
+					<td id='num'>3B</td>
 					<td>2</td>
 					<td>$45.00</td>
 					<td>
@@ -54,7 +54,7 @@
 					</td>
 				</tr>
 				<tr id='room3C'>
-					<td>3C</td>
+					<td id='num'>3C</td>
 					<td>3</td>
 					<td>$52.64</td>
 					<td>
@@ -62,7 +62,7 @@
 					</td>
 				</tr>
 				<tr id='room4A'>
-					<td>4A</td>
+					<td id='num'>4A</td>
 					<td>4</td>
 					<td>$59.99</td>
 					<td>
@@ -70,7 +70,7 @@
 					</td>
 				</tr>
 				<tr id='room4B'>
-					<td>4B</td>
+					<td id='num'>4B</td>
 					<td>4</td>
 					<td>$59.99</td>
 					<td>
@@ -82,10 +82,10 @@
 	</div>
 	<div id='booking' class='modal'>
 		<div class='modal-content'>
-			<span class='close'>X</span>
+			<span class='close'>&times;</span>
 			<h1 id='title'>Book A Room</h1>
 			<ul id='list' class='content'>
-				<li class='flex flex-row-between'><span id='roomNum'></span><span id='pricePerNight'></span></li>
+				<li class='flex flex-row-between'><span id='roomNumber'></span><span id='pricePerNight'></span></li>
 				<li class='flex flex-row-between'>Check In
 					<form>
 						<input type='date' name='checkIn'>
@@ -101,9 +101,6 @@
 							<option value=5>5</option>
 							<option value=6>6</option>
 							<option value=7>7</option>
-							<option value=8>8</option>
-							<option value=9>9</option>
-							<option value=10>10</option>
 						</select>
 					</form>
 				</li>
